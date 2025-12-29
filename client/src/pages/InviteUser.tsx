@@ -24,8 +24,10 @@ export const InviteUser: React.FC = () => {
     setSuccess('');
 
     try {
-      await apiService.inviteUser({ email, role: role as any });
+     const responce = await apiService.inviteUser({ email, role: role as any });
+     alert(` invitaion link  ${process.env.REACT_APP_URL}/accept-invitation?token=${responce.data.data?.token} `);
       setSuccess('Invitation sent successfully!');
+      
       setEmail('');
       setTimeout(() => {
         navigate('/users');

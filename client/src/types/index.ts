@@ -41,6 +41,7 @@ export interface Invitation {
   email: string;
   role: 'admin' | 'member' | 'viewer';
   status: 'pending' | 'accepted' | 'expired';
+  token: string;
   expiresAt: string;
   createdAt: string;
   invitedBy: {
