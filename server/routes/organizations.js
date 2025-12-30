@@ -138,7 +138,7 @@ router.get('/:orgId/members', auth, requireOrg, async (req, res) => {
     const skip = (page - 1) * limit;
 
     // Build query
-    const query = { organizationId: req.organization._id, isActive: true };
+    const query = { organizationId: req.organization._id};
     if (role) query.role = role;
 
     let memberships = await Membership.find(query)
@@ -171,7 +171,7 @@ router.get('/:orgId/members', auth, requireOrg, async (req, res) => {
       firstName: m.userId.firstName,
       lastName: m.userId.lastName,
       role: m.role,
-      isActive: m.userId.isActive,
+      isActive: m.isActive,
       joinedAt: m.joinedAt,
       lastLoginAt: m.userId.lastLoginAt,
       invitedBy: m.invitedBy ? {
